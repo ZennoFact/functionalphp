@@ -12,10 +12,12 @@ function createFileData($file, $basePath) {
 function fileOnly($file, $basePath) {
     return is_file($basePath . $file);
 }
-// ここのliタグの中身，関数に分離できてないけど，もう結構限界。ほかにもいい手段があるかもしれない
 function createLi($li, $data) {
-    $li .= "<li>" . $data->title . "=>" . $data->path . "</li>"."\n";
+    $li .= "<li>" . generateLiData($data) . "</li>"."\n";
     return $li;
+}
+function generateLiData($data) {
+    return $data->title . "=>" . $data->path;
 }
 function natureSort($files, $order) {
     natcasesort($files);
